@@ -77,7 +77,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/nvan-den/inception/data/database
+      device: ~/data/database
 
   # keeps the wordpress files
   wordpress_files:
@@ -85,7 +85,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/nvan-den/inception/data/wordpress_files
+      device: ~/data/wordpress_files
 
 # networks --------------------------------------------------------------------
 
