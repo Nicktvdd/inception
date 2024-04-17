@@ -4,13 +4,6 @@
 # creates start the mariadb service and create the database and users according to the .env file
 # at the end, exec $@ runs the next CMD in the Dockerfile. In this case: "mysqld_safe" that restarts the mariadb service
 
-# set -ex # print commands & exit on error (debug mode)
-
-DB_NAME=thedatabase
-DB_USER=theuser
-DB_PASSWORD=abc
-DB_PASS_ROOT=123
-
 service mariadb start
 
 mariadb -v -u root << EOF
