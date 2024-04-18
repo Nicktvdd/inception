@@ -5,13 +5,14 @@ services:
   # this is the only container that no depend on the others, so its the first to be created
   mariadb:
     container_name: mariadb
+    image: mariadb:nick
     build: ./requirements/mariadb/
     volumes:
       - database:/var/lib/mysql/
     networks:
       - all
-    init: true
-    restart: on-failure
+    # init: true
+    restart: always
     env_file:
       - .env
 
@@ -20,13 +21,14 @@ services:
   # this is the second container to be created, it depends on the mariadb container
   wordpress:
     container_name: wordpress
+    image: wordpress:nick
     build: ./requirements/wordpress/
     volumes:
       - wordpress_files:/var/www/inception/
     networks:
       - all
-    init: true
-    restart: on-failure
+    # init: true
+    restart: always
     env_file:
       - .env
     depends_on:
@@ -39,6 +41,7 @@ services:
   # in the build moment with show the private informations that where in the .env file
   nginx:
     container_name: nginx
+    image: nginx:nick
     build:
       context: ./requirements/nginx/
       args:
@@ -57,8 +60,8 @@ services:
       - wordpress_files:/var/www/inception/
     networks:
       - all
-    init: true
-    restart: on-failure
+    # init: true
+    restart: always
     env_file:
       - .env
     depends_on:
